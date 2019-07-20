@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="sidebar">
+    <div class="sidebar">
+        <ul class="nav nav-sidebar">
+            <!--            Все простые страницы + меню деревом-->
+            <li><a href="/manage/page">Pages</a></li>
+            <!--            Домашняя страницы-->
+            <li><a href="/manage/home">Home</a></li>
+            <!--            Все продукты(возможно нафиг не надо и проще объединить с прочими страницами)-->
+<!--            <li><a href="/manage/produkt">Produktu</a></li>-->
+            <!--            контакты-->
+            <li><a href="/manage/contact">Contacts</a></li>
+            <!--            пдфка товаров-->
+<!--            <li><a href="/manage/attachment">Attachments</a></li>-->
+            <!--            Юзеры-->
+<!--            <li><a href="/manage/admin">Admins</a></li>-->
+        </ul>
+    </div>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>	
+	<title>TITLE promena | Schönheitsklinik ISCARE Prag</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+	<meta name="Expires" content="never">
+	<meta name="Revisit-after" content="7 days">
+	<meta name="Resource-type" content="document">
+	<meta name="robots" content="index, follow">
+	<meta name="author" content="azcompany@email.cz">
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="js/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body class="hamburgerMenu active_page">	
+    <header class="header">
+        <div class="menu_block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-lg-6">
+                        <a n:href="Homepage:" class="logo_main"><img src="./img/logo.svg"></a>
+                    </div>
+                    <div class="col-6 col-lg-6">
+                        <a href="tel:0080023332333" class="phone_header">
+                            <i class="fas fa-phone-square"></i>00800 2333 2333
+                        </a>
+                        <div class="block_nav_btn">
+                            <a class="menu_show_btn">
+                                <div class="icon" onclick="openMenu()">
+                                    <span class="bar first"></span>
+                                    <span class="bar middle"></span>
+                                    <span class="bar last"></span>
+                                </div>
+                            </a>
+                            <a href="https://www.facebook.com/pages/Plastische-Chirurgie-Iscare/140361402796416" class="facebook" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!--Fixed menu-->
+    <div class="fixed-nav">
+        <div class="nav-wrapper">
+
+            <div class="main-links">
+                <div class="list">
+                    <ul class="holder">
+                        <li class="{if $presenter->name == "Homepage"}active{/if}"><a n:href="Homepage:">Home</a></li>
+                        <li class="has-sub face"><a class="mainMenu" data-val="face" onclick="openSubMenu(this)">Gesicht</a></li>
+                        <li class="has-sub breast"><a class="mainMenu" data-val="breast" onclick="openSubMenu(this)">Brüste</a></li>
+                        <li class="has-sub body"><a class="mainMenu" data-val="body" onclick="openSubMenu(this)">Körper</a></li>
+                        <li class="{if $presenter->name == "UnsereKlinik"}active{/if}"><a n:href="UnsereKlinik:">Unsere Klinik</a></li>
+                        <li class="{if $presenter->name == "OpKosten"}active{/if}"><a n:href="OpKosten:">OP- Kosten</a></li>
+                        <li class="{if $presenter->name == "Finanzierung"}active{/if}"><a n:href="Finanzierung:">Finanzierung</a></li>
+                        <li class="{if $presenter->name == "Team"}active{/if}"><a n:href="Team:">Team</a></li>
+                        <li class="{if $presenter->name == "Kontakt"}active{/if}"><a n:href="Kontakt:">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sub-links">
+                <div class="list">
+                    <!-- face -->
+                    <ul class="face" data-val="face">
+                        <li class="back"><a>Back</a></li>
+                        <div class="group">
+                            <li class="{if $presenter->name == "Facelifting"}active{/if}"><a n:href="Facelifting:">Facelifting</a></li>
+                            <li class="{if $presenter->name == "Nasenkorrektur"}active{/if}"><a n:href="Nasenkorrektur:">Nasenkorrektur</a></li>
+                            <li class="{if $presenter->name == "Ohrenkorrektur"}active{/if}"><a n:href="Ohrenkorrektur:">Ohrenkorrektur</a></li>
+                            <li class="{if $presenter->name == "Augenlidstraffung"}active{/if}"><a n:href="Augenlidstraffung:">Augenlidstraffung</a></li>
+                        </div>
+                    </ul>
+                    
+                    <!-- Breast -->
+                    <ul class="breast" data-val="breast">
+                        <li class="back"><a>Back</a></li>
+                        <div class="group">
+                            <li class="{if $presenter->name == "Brustvergroesserung"}active{/if}"><a n:href="Brustvergroesserung:">Brustvergrößerung</a></li>
+                            <li class="{if $presenter->name == "Brustverkleinerung"}active{/if}"><a n:href="Brustverkleinerung:">Brustverkleinerung</a></li>
+                            <li class="{if $presenter->name == "Bruststraffung"}active{/if}"><a n:href="Bruststraffung:">Bruststraffung</a></li>
+                            <li class="{if $presenter->name == "Gynakomastie"}active{/if}"><a n:href="Gynakomastie:">Gynäkomastie</a></li>
+                        </div>
+                    </ul>
+                    
+                    <!-- Body -->
+                    <ul class="body" data-val="body">
+                        <li class="back"><a>Back</a></li>
+                        <div class="group">
+                            <li class="{if $presenter->name == "Oberarmstraffung"}active{/if}"><a n:href="Oberarmstraffung:">Oberarmstraffung</a></li>
+                            <li class="{if $presenter->name == "Bauchdeckenstraffung"}active{/if}"><a n:href="Bauchdeckenstraffung:">Bauchdeckenstraffung</a></li>
+                            <li class="{if $presenter->name == "Fettabsaugungen"}active{/if}"><a n:href="Fettabsaugungen:">Fettabsaugungen</a></li>
+                            <li class="{if $presenter->name == "Oberschenkelstraffung"}active{/if}"><a n:href="Oberschenkelstraffung:">Oberschenkelstraffung</a></li>
+                            <li class="{if $presenter->name == "Schamlippenverkleinerung"}active{/if}"><a n:href="Schamlippenverkleinerung:">Schamlippenverkleinerung</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <!--Content page-->
+    <div class="page_new_container">
+        <div class="container">
+
+            <h1 class="title_page">INFORMATIONEN ÜBER DAS FACELIFT ISCARE Prag</h1>
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-6">
+                    <div class="image_page_elements text-center mb-lg-0 mb-5">
+                        <img src="./images/img_product/face_Facelifting.jpg" class="mw-100" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="text_page_elements">
+                        <p><span>*</span> Die Faltenbildung und allgemeine Hautabsenkung im Gesichtsbereich ist eine äußere Erscheinung der Hautalterung. Dies ist durch die Fettabnahme im Gesicht und durch den Verlust der Hautelastizität verursacht. Dieser Alterungsprozess kann durch ein Facelifting (Face lift, Gesichtsstraffung) behoben werden. Die Operation basiert auf Erneuerung der Hautspannung. Überflüssige Haut muss beseitigt werden.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="content_faq_page">
+                        <div class="item_faq">
+                            <div class="title_faq" id="faq_title_1" onclick="slideFaq('1');">
+                                <span>**</span> Allgemeine Informationen
+                                <span class="icon_faq">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </div>
+                            <div class="content_faq" id="faq_content_1">
+	                            <p>Die Faltenbildung und allgemeine Hautabsenkung im Gesichtsbereich ist eine äußere Erscheinung der Hautalterung. Dies ist durch die Fettabnahme im Gesicht und durch den Verlust der Hautelastizität verursacht. Dieser Alterungsprozess kann durch ein Facelifting (Face lift, Gesichtsstraffung) behoben werden. Die Operation basiert auf Erneuerung der Hautspannung. Überflüssige Haut muss beseitigt werden. Die Schnitte werden so geführt, dass sie möglichst unscheinbar bleiben. Sie werden im haarbedeckten Schläfenbreich geführt - unmittelbar vor der Ohrmuschel und unterhalb der Ohrmuschel nach hinten ins Haar. Diese Operation kann bei Frauen wie bei Männern vorgenommen werden. Das Alter der Patienten liegt meist zwischen 40 und 60 Jahren. Das Facelift kann mit einer Operation der Augenlider (Oberlid- und Unterlidstraffung), Halslift, Stirnlifting und mit Fettabsaugung eines Doppelkinns kombiniert werden.</p>
+	                            <p>Alternativ zum Facelift kann auch das S Lift oder Mini Lift vorgenommen werden. Bei dem S Lift wird die Haut der mittleren und unteren Gesichtshälfte mit Hilfe von Fäden gestrafft. Das Mini Lift dient zur Behandlung der Wangen und des Kieferbereichs.</p>
+                            </div>
+                        </div>
+
+                        <div class="item_faq">
+                            <div class="title_faq" id="faq_title_2" onclick="slideFaq('2');">
+                                <span>**</span> Beratungsgespräch mit dem Arzt
+                                <span class="icon_faq">
+                                	<i class="fas fa-plus"></i>
+                                </span>
+                            </div>
+                            <div class="content_faq" id="faq_content_2">
+	                            <p>Vor dem Facelifting-OP erfolgt eine ausführliche Besprechung mit dem Arzt. Sie werden über den OP-Verlauf, die möglichen Risiken und den postoperativen Verlauf belehrt.</p>
+	                            <p>Das Beratungsgespräch kann auch am Operationstermin stattfinden. Das Beratungsgespräch ist kostenlos.</p>
+	                            <p>Terminvereinbarung für ein Beratungsgespräch zum Facelift in unserer Klinik ist unter der folgenden Tel.Nr.: +420 702 147 783, oder per E-Mail: trpikova@iscare.cz möglich.</p>
+                            </div>
+                        </div>
+
+                        <div class="item_faq">
+                            <div class="title_faq" id="faq_title_3" onclick="slideFaq('3');">
+                                <span>**</span> Vor und nach der OP
+                                <span class="icon_faq">
+                                	<i class="fas fa-plus"></i>
+                                </span>
+                            </div>
+                            <div class="content_faq" id="faq_content_3">
+	                            <p>Vor der Gesichtsstraffung werden Sie einer präoperativen Untersuchung durch unseren Internisten unterzogen. Teil der Untersuchung ist eine Blutabnahme, EKG-Untersuchung sowie eine Bewertung Ihres Gesundheitszustandes. Das Facelift wird in Vollnarkose durchgeführt und dauert etwa 2-3 Stunden. Der Klinikaufenthalt beträgt dann im Durchschnitt 1-2 Tage. Nach der Operation wird das Gesicht mit einer elastischen Binde umwickelt, wodurch die Bildung von größeren Blutergüssen verhindert werden soll. Dann wird der Patient mit einer speziellen elastischen Bandage in häusliche Behandlung entlassen. Blauflecken und Ödeme treten in der Regel ein bis zwei Wochen lang auf. Die Narben dürfen mindestens 2 Monate lang keiner Sonnenstrahlung ausgesetzt werden und auch keiner Strahlung im Solarium.</p>
+                            </div>
+                        </div>
+
+                        <div class="item_faq">
+                            <div class="title_faq" id="faq_title_4" onclick="slideFaq('4');">
+                                <span>**</span> Welche Komplikationen können auftreten?
+                                <span class="icon_faq">
+                                	<i class="fas fa-plus"></i>
+                                </span>
+                            </div>
+                            <div class="content_faq" id="faq_content_4">
+	                            <ul>
+		                            <li>Größere Blutungen</li>
+		                            <li>Infektion (kann die Wundheilung verschlimmern). Das Infektionsrisiko ist jedoch äußerst gering.</li>
+		                            <li>Selten, wie bei jeder Operation, kann auch bei der Gesichtsstraffung eine Embolie oder Thrombose auftreten.</li>
+		                            <li>Bei normaler Wundheilung können die Narben deutlich gerötet sein, verblassen aber im Laufe der Zeit und werden zart und unauffällig. Bei Wundheilung können keloide Narben mit Hautverfärbung entstehen.</li>
+	                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="item_faq">
+                            <div class="title_faq" id="faq_title_5" onclick="slideFaq('5');">
+                                OP-Preis
+                                <span class="icon_faq">
+                                	<i class="fas fa-plus"></i>
+                                </span>
+                            </div>
+                            <div class="content_faq" id="faq_content_5">
+	                            <p>Der Preis für das Facelift beträgt <strong>1 800 EUR</strong>, 200 EUR für die präoperative Untersuchung, 120 EUR für jede Übernachtung in der Klinik,175 EUR für Vollnarkose und 45 EUR für die elastische Bandage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-lg-6">
+                    <div class="contact_page_form">
+                        <h3>KONTAKTFORMULAR</h3>
+
+<div class="content_form_page">
+<div id="snippet--faceliftingForm">				            	<script src="https://www.google.com/recaptcha/api.js"></script>
+				            	
+				            	<form action="/facelifting/" method="post" id="frm-faceliftingForm" class="ajax" novalidate="">
+				            		<div class="inputFormPage"><input type="text" name="name" placeholder="Name" class="input_page" id="frm-faceliftingForm-name"></div>
+				            		<div class="inputFormPage"><input type="text" name="email" placeholder="*E-Mail-Adresse" class="input_page" id="frm-faceliftingForm-email" data-nette-rules="[{&quot;op&quot;:&quot;:email&quot;,&quot;msg&quot;:&quot;Bitte f\u00fcllen Sie alle gekennzeichneten Felder (*) aus.&quot;}]"></div>
+				            		<div class="inputFormPage"><input type="text" name="phone" placeholder="Telefonnummer" class="input_page" id="frm-faceliftingForm-phone"></div>
+				            		<div class="inputFormPage"><textarea name="note" rows="7" placeholder="*Betreff" class="input_page" id="frm-faceliftingForm-note" required="" data-nette-rules="[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Bitte f\u00fcllen Sie alle gekennzeichneten Felder (*) aus.&quot;}]"></textarea></div>
+				            		
+				            		<div class="bottom_form_btn d-lg-flex align-items-center">
+				            			<input type="submit" name="_submit" class="send_page_btn" onclick="javascript: 
+        if (grecaptcha.getResponse().length === 0) {
+          $('.g-recaptcha').addClass('error');
+          return;
+        } else {
+          $('.g-recaptcha.error').removeClass('error');
+        }
+        if (typeof dataLayer === 'object') { 
+          dataLayer.push({
+            event:'formFacelifting',action:'submit'
+          });
+        }
+      " value="Senden">
+				            			<div class="g-recaptcha mb10" data-sitekey="6LdlBZUUAAAAAFOzhfCyzYFOlLu9R1HH7eKTELuF"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdlBZUUAAAAAFOzhfCyzYFOlLu9R1HH7eKTELuF&amp;co=aHR0cHM6Ly93d3cuaXNjYXJlLmRlOjQ0Mw..&amp;hl=cs&amp;v=v1561357937155&amp;size=normal&amp;cb=smjkzq9589jb" role="presentation" name="a-psfso32wwv2n" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" width="304" height="78" frameborder="0"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+				            		</div>
+				            		
+<p class="noticeForm">Durch Versendung des Kontaktformulars stimmen Sie zur Bearbeitung der personenbezogenen Daten gemäß folgender <a target="_blank" href="/gdpr/">Datenschutzerklärung</a> zu</p>				            		
+				            	<input type="hidden" name="do" value="faceliftingForm-submit"></form>
+
+</div>                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+	            <div class="col-12">
+		            <hr>
+		            <p><strong>*</strong> <small><em>Die abgebildeten Angaben sind Ergebnis statistischer Methoden der Datenverarbeitung. Auf Basis dieser Methoden kann der wahrscheinliche Zustand nach der Behandlung indiziert, jedoch nicht das Behandlungsergebnis eines konkreten Patienten garantieren werden. Das Ergebnis ist von den individuellen Dispositionen und konkreten Art der Behandlung abhängig.</em></small></p>
+		            <p><strong>**</strong> <small><em>Die präsentierten Werte sind Ergebnis medizinischer Studien, z.B. Ergebnis statistischer Methoden der Datenverarbeitung. Auf Basis dieser Methoden kann der wahrscheinliche Zustand nach der Behandlung indiziert, jedoch nicht das Behandlungsergebnis eines konkreten Patienten garantieren werden. Das Ergebnis ist von den individuellen Dispositionen und konkreten Art der Behandlung abhängig.</em></small></p>
+		            <p><strong>***</strong> <small><em>Die verwendeten Fotografien haben einen illustrativen Charakter. Es handelt sich um das Behandlungsergebnis eines konkreten Falles. Das finale Ergebnis ist bei jedem Patienten individuell und entspricht seinen körperlichen Dispositionen.</em></small></p>
+	            </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+
+
+
+    <footer class="footer">
+        <div class="container">
+	        <div class="row mb-4">
+		        <div class="col-12 col-lg-3 mAuto">
+		            <a href="/" class="logo_footer">
+			            <img class="img-fluid" src="img/logo_bile.svg" alt="">
+		            </a>
+		        </div>
+	        </div>
+            <div class="row">
+                <div class="col-12 col-lg-10">
+                    <p class="text_footer">Das sind die Webseiten der Gesellschaft ISCARE I.V.F. AG, mit Sitz Jankovcova 1569/2c, 170 04 Praha 7, Identifikationsnummer: 61858366, eingetragen im von dem Stadtgericht in Prag geführten Handelsregister, Abteilung B, Einlage 2703. Die Gesellschaft ISCARE I.V.F. AG ist Mitglied des Konzerns SynBiol AG, geführt durch die Gesellschaft SynBiol AG, mit Sitz Praha 4, Pyšelská 2327/2, PLZ 14900, Identifikationsnummer: 26014343, eingetragen im von dem Stadtgericht in Prag geführten Handelsregister, Abteilung B, Einlage 14742.</p>
+                </div>
+                <div class="col-12 col-lg-2">
+                    <div class="img_info_footer">
+                        <img class="img-fluid" src="img/foot.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-4">
+
+                </div>
+                <div class="col-12 col-lg-4">
+                    <p class="copyright_footer">Copyright ISCARE IVF</p>
+                </div>
+                <div class="col-12 col-lg-4">
+
+                </div>
+            </div>
+        </div>
+        
+    <div class="modalVideo">
+        <div class="close_modal" onclick="$('.modalVideo').hide()"></div>
+        <div class="content_modal">
+            <span class="modal_close_btn" onclick="$('.modalVideo').hide()"><i class="fas fa-times"></i></span>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/nUnOGpA16Zo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+        </div>
+    </div>
+    </footer>
+    
+    <script src="js/libs.min.js"></script>
+	<script src="js/netteForms.js"></script>
+	<script src="js/nette.ajax.js"></script>
+	<script type="text/javascript">
+		$(function () {
+		    $.nette.init();
+		});
+	</script>
+    <script src="js/slick/slick.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+    
+    <script src="js/common.js"></script>
+</body>
+</html>

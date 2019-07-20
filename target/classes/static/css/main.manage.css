@@ -1,0 +1,31 @@
+h1 {
+    color: #78ab46;
+}
+
+footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    background-color: #ccc
+}
+
+footer p {
+    padding: 15px;
+}
+
+.toggles .action {
+    width: 20%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.toggles .alertTitle {
+    margin: 0;
+}
+
+.preview_image {
+    margin-bottom: 5px;
+    max-width: 333px;
+    max-height: 155px;
+}

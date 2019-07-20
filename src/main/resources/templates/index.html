@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org" xmlns:n="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="${home.metaTitle}"></title>
+    <meta name="description" th:content="${home.metaDescription}">
+    <meta name="keywords" th:content="${home.metaKeywords}">
+
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+    <meta name="Expires" content="never">
+    <meta name="Revisit-after" content="7 days">
+    <meta name="Resource-type" content="document">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="azcompany@email.cz">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+          integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/slick/slick.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/slick/slick-theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+</head>
+
+<body class="hamburgerMenu">
+<header class="header">
+    <img src="./img/header.jpg" alt="">
+    <div class="menu_block">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-lg-6">
+                    <a n:href="Homepage:" class="logo_main"><img src="./img/logo.svg"></a>
+                </div>
+                <div class="col-6 col-lg-6">
+                    <a href="tel:0080023332333" class="phone_header">
+                        <i class="fas fa-phone-square"></i>00800 2333 2333
+                    </a>
+                    <div class="block_nav_btn">
+                        <a class="menu_show_btn">
+                            <div class="icon" onclick="openMenu()">
+                                <span class="bar first"></span>
+                                <span class="bar middle"></span>
+                                <span class="bar last"></span>
+                            </div>
+                        </a>
+                        <a href="https://www.facebook.com/pages/Plastische-Chirurgie-Iscare/140361402796416"
+                           class="facebook" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="title_header"><h1>Traumfigur? <span>Lassen Sie Ihren Traum in&nbsp;Erfüllung gehen!</span></h1></div>
+</header>
+
+<!--Fixed menu-->
+<div class="fixed-nav">
+    <div class="nav-wrapper">
+
+        <div class="main-links">
+            <div class="list">
+                <ul class="holder">
+                    <li class="{if $presenter->name == " Homepage
+                    "}active{/if}"><a th:href="''">Home</a></li>
+
+                    <li th:each="folder : ${folders}" th:class="'has-sub ' + ${folder.id}">
+                        <a class="mainMenu" th:data-val="${folder.id}" onclick="openSubMenu(this)" th:text="${folder.title}"></a>
+                    </li>
+
+                    <li th:each="page : ${pageTree}" th:if="${page.type == 1 && page.parentId == 0}">
+                        <a n:href="UnsereKlinik:" th:text="${page.text}"></a>
+                    </li>
+
+                    <li><a th:href="'kontakt'">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sub-links">
+            <div class="list">
+                <ul th:each="folder : ${folders}" th:class="${folder.id}" th:data-val="${folder.id}">
+                    <li class="back"><a>Back</a></li>
+                    <div class="group">
+                        <li th:each="page : ${pageTree}" th:if="${page.type == 1 && page.parentId == folder.folder.id}">
+                            <a n:href="Facelifting:" th:text="${page.text}"></a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--Block info top-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="head_context"></div>
+        </div>
+    </div>
+</div>
+<!--info top end-->
+
+<!--Photo block-->
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-12 col-lg-4" th:each="folder : ${folders}">
+            <div class="item_photo" th:onclick="'openMenu();photoMenu(\'' + ${folder.id} + '\')'">
+                <p class="text_photo" th:text="${folder.title}"></p>
+                <span class="link_photo" th:text="${folder.content}"></span>
+                <img th:src="'data:image/jpeg;base64,' + ${folder.imageStr}" alt="">
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="item_photo" onclick="openMenu();photoMenu('face')">
+                <p class="text_photo">Gesicht</p>
+                <span class="link_photo">Mehr</span>
+                <img src="img/photo_1.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="item_photo" onclick="openMenu(); photoMenu('breast')">
+                <p class="text_photo">Brüste</p>
+                <span class="link_photo">Mehr</span>
+                <img src="img/photo_2.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="item_photo" onclick="openMenu();photoMenu('body')">
+                <p class="text_photo">Körper</p>
+                <span class="link_photo">Mehr</span>
+                <img src="img/photo_3.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Block info center-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="block_info_top">
+                <div id="body_context"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Video block-->
+<div class="video_block">
+    <div class="container">
+        <div class="video_content_item" onclick="$('.modalVideo').show()"></div>
+    </div>
+</div>
+
+<!--Iscare Team-->
+<div class="container">
+    <div class="block_team">
+        <div id="down_context"></div>
+    </div>
+</div>
+
+<!--Contacts-->
+<div class="contact_block">
+    <div class="maps_block">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.1151067235246!2d14.454580915392418!3d50.10285242023125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470bed2f46575e65%3A0x421f3007b5021265!2sKlinick%C3%A9+centrum+ISCARE!5e0!3m2!1scs!2scz!4v1551556354205"
+                width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-1">
+
+            </div>
+            <div class="col-12 col-lg-5 pr-0">
+                <div class="content_form">
+                    <h4>kontaktformullar</h4>
+
+                    <div id="snippet--homepageForm">
+                        <script src="https://www.google.com/recaptcha/api.js"></script>
+
+                        <form action="/" method="post" id="frm-homepageForm" class="ajax" novalidate="">
+                            <div class="form_group_input"><input type="text" name="name" placeholder="Name"
+                                                                 class="input_item" id="frm-homepageForm-name"></div>
+                            <div class="form_group_input"><input type="text" name="email" placeholder="*E-Mail-Adresse"
+                                                                 class="input_item" id="frm-homepageForm-email"
+                                                                 data-nette-rules="[{&quot;op&quot;:&quot;:email&quot;,&quot;msg&quot;:&quot;Bitte f\u00fcllen Sie alle gekennzeichneten Felder (*) aus.&quot;}]">
+                            </div>
+                            <div class="form_group_input"><input type="text" name="phone" placeholder="Telefonnummer"
+                                                                 class="input_item" id="frm-homepageForm-phone"></div>
+                            <div class="form_group_input"><textarea name="note" rows="7" placeholder="*Betreff"
+                                                                    class="input_item" id="frm-homepageForm-note"
+                                                                    required=""
+                                                                    data-nette-rules="[{&quot;op&quot;:&quot;:filled&quot;,&quot;msg&quot;:&quot;Bitte f\u00fcllen Sie alle gekennzeichneten Felder (*) aus.&quot;}]"></textarea>
+                            </div>
+                            <div class="g-recaptcha mb10" data-sitekey="6LdlBZUUAAAAAFOzhfCyzYFOlLu9R1HH7eKTELuF">
+                                <div style="width: 304px; height: 78px;">
+                                    <div>
+                                        <iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdlBZUUAAAAAFOzhfCyzYFOlLu9R1HH7eKTELuF&amp;co=aHR0cHM6Ly93d3cuaXNjYXJlLmRlOjQ0Mw..&amp;hl=cs&amp;v=v1561357937155&amp;size=normal&amp;cb=swy1sxajq40d"
+                                                role="presentation" name="a-tkh2zcjruvj6" scrolling="no"
+                                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
+                                                width="304" height="78" frameborder="0"></iframe>
+                                    </div>
+                                    <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                              class="g-recaptcha-response"
+                                              style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                </div>
+                            </div>
+                            <input type="submit" name="_submit" class="send_btn" onclick="javascript:
+        if (grecaptcha.getResponse().length === 0) {
+          $('.g-recaptcha').addClass('error');
+          return;
+        } else {
+          $('.g-recaptcha.error').removeClass('error');
+        }
+        if (typeof dataLayer === 'object') { 
+          dataLayer.push({
+            event:'formHomepage',action:'submit'
+          });
+        }
+      " value="Senden">
+
+                            <input type="hidden" name="do" value="homepageForm-submit"></form>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-5 pl-0">
+                <div class="info_contact">
+                    <h5>CONTACT US</h5>
+                    <p class="adress_info">
+                        ISCARE IVF<br>
+                        Jankovcova 1569/2c<br>
+                        Prag 7<br>
+                        Tschechische Republik
+                    </p>
+                    <a href="tel:00800 233 233" class="number_phone">00800 233 233</a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-1">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 col-lg-3 mAuto">
+                <a href="/" class="logo_footer">
+                    <img class="img-fluid" src="img/logo_bile.svg" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-10">
+                <p class="text_footer">Das sind die Webseiten der Gesellschaft ISCARE I.V.F. AG, mit Sitz Jankovcova
+                    1569/2c, 170 04 Praha 7, Identifikationsnummer: 61858366, eingetragen im von dem Stadtgericht in
+                    Prag geführten Handelsregister, Abteilung B, Einlage 2703. Die Gesellschaft ISCARE I.V.F. AG ist
+                    Mitglied des Konzerns SynBiol AG, geführt durch die Gesellschaft SynBiol AG, mit Sitz Praha 4,
+                    Pyšelská 2327/2, PLZ 14900, Identifikationsnummer: 26014343, eingetragen im von dem Stadtgericht in
+                    Prag geführten Handelsregister, Abteilung B, Einlage 14742.</p>
+            </div>
+            <div class="col-12 col-lg-2">
+                <div class="img_info_footer">
+                    <img class="img-fluid" src="img/foot.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+
+            </div>
+            <div class="col-12 col-lg-4">
+                <p class="copyright_footer">Copyright ISCARE IVF</p>
+            </div>
+            <div class="col-12 col-lg-4">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modalVideo">
+        <div class="close_modal" onclick="$('.modalVideo').hide()"></div>
+        <div class="content_modal">
+            <span class="modal_close_btn" onclick="$('.modalVideo').hide()"><i class="fas fa-times"></i></span>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/nUnOGpA16Zo" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+</footer>
+
+<script src="js/libs.min.js"></script>
+<script src="js/netteForms.js"></script>
+<script src="js/nette.ajax.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $.nette.init();
+    });
+</script>
+<script src="js/slick/slick.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css"/>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+
+<script src="js/common.js"></script>
+
+<script th:inline="javascript">
+    var headContext = [[${headContext}]];
+    var bodyContext = [[${bodyContext}]];
+    var downContext = [[${downContext}]];
+
+    $('#head_context').html(headContext);
+    $('#body_context').html(bodyContext);
+    $('#down_context').html(downContext);
+</script>
+</body>
+</html>

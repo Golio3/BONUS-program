@@ -1,3 +1,52 @@
+function replaceItems (html) {
+    // Replace the <fieldset id="items"> with a new one returned by server.
+    $('#items').replaceWith($(html));
+}
+
+$('button[name="addItem"]').click(function (event) {
+    event.preventDefault();
+    var data = $('form').serialize();
+    // Add parameter "addItem" to POSTed form data. Button's name and value is
+    // POSTed only when clicked. Since "event.preventDefault();" prevents from
+    // actual clicking the button, following line will add parameter to form
+    // data.
+    data += 'addItem';
+    $.post('/order', data, replaceItems);
+});
+
+$('button[name="deleteUser"]').click(function (event) {
+    // event.preventDefault();
+    // var data = $('form').serialize();
+    // data += 'id=' + $(this).val();
+    // $.post('/manage/admin/delete', data);
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/manage/admin/delete",
+    //     data: {
+    //         id: $(this).val()
+    //     },
+    //     dataType: 'json',
+    //     timeout: 600000,
+    //     success: function (postData) {
+    //         $('#usersForm').submit();
+    //     },
+    //     error: function (err) {
+    //         $('#usersForm').submit();
+    //     }
+    // });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 var editsummernote = function () {
     $('.click2edit').summernote({focus: true});
 };

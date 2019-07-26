@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{admin/fragments/layoutUser}">
+<head>
+    <title>Můj Účet</title>
+</head>
+<body>
+<div layout:fragment="user" th:remove="tag">
+    <form th:action="@{/manage/user}" th:object="${user}">
+        <form></form>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+                    <p style="font-size: 30px;">KATALOG ODMEN</p>
+                </div>
+                <div class="col-md-3">
+                    <button th:if="${numberAll}==0" th:text="'Košík'"></button>
+                    <form th:action="@{'/manage/user/bonus'}">
+                        <button th:if="${numberAll}>0" th:text="'Košík(' + ${numberAll} + ') - ' + ${costAll}"></button>
+                    </form>
+                    <button>?</button>
+                    <label>Napoveda >></label>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-4" th:each="bonus,stat : ${bonuses}">
+                    <div class="item_photo">
+                        <img th:src="'data:image/jpeg;base64,' + ${bonus.imageStr}" alt="">
+                        <label class="cost_photo" th:text="${bonus.cost} + ' bodu'"></label>
+
+                        <form th:action="@{'/manage/user/{id}/add/{bonusId}'(id=${user.id}, bonusId=${bonus.id})}">
+                            <button class="add_photo" th:disabled="${user.pointsActual < bonus.cost}">Objednat >></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </form>
+</div>
+</body>
+</html>

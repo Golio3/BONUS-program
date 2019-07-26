@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{admin/fragments/layoutLogin}">
+<head>
+    <title>Registrace</title>
+</head>
+<body>
+<div layout:fragment="login" th:remove="tag">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Registrace</h1>
+                <form th:action="@{/registration}" th:object="${reg}" accept-charset="UTF-8" method="post">
+                    <div th:if="${reg.errors != null && reg.errors.length() > 0}">
+                        <div class="alert alert-danger">
+                            <label th:text="${reg.errors}"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Uživatelské jméno</label>:
+                        <input type="text"
+                               id="username"
+                               name="username"
+                               class="form-control"
+                               autofocus="autofocus"
+                               placeholder="Uživatelské jméno">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Heslo</label>:
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               class="form-control"
+                               placeholder="Heslo">
+                    </div>
+                    <div class="form-group">
+                        <label for="repeatPassword">Opakujte heslo</label>:
+                        <input type="password"
+                               id="repeatPassword"
+                               name="repeatPassword"
+                               class="form-control"
+                               placeholder="Opakujte heslo">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresa</label>:
+                        <input type="text"
+                               id="address"
+                               name="address"
+                               class="form-control"
+                               placeholder="Adresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Tel</label>:
+                        <input type="text"
+                               id="tel"
+                               name="tel"
+                               class="form-control"
+                               placeholder="420000000000">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>:
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               class="form-control"
+                               placeholder="email@email.cz">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit"
+                                       name="reg-submit"
+                                       id="reg-submit"
+                                       class="form-control btn btn-info"
+                                       value="Register">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

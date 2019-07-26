@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{admin/fragments/layoutUser}">
+<head>
+    <title>Košík</title>
+</head>
+<body>
+<div layout:fragment="user" th:remove="tag">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form th:action="@{/manage/user/bonus}" th:object="${userBonus}">
+                    <div th:if="${#lists.isEmpty(userBonus)}" class="alert alert-info" role="alert">
+                        Nebyly nalezeny žádné dárky
+                    </div>
+                    <div th:if="${not #lists.isEmpty(userBonus)}">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Dárek
+                                </td>
+                                <td>
+                                    Body
+                                </td>
+                                <td>
+                                    Počet
+                                </td>
+                                <td>
+                                    Součet
+                                </td>
+                            </tr>
+                            <tr th:each="ub,stat : ${userBonus}" class="toggles">
+                                <td>
+                                    <div class="alert alert-info alertTitle" role="alert">
+                                        <span th:text="${ub.bonus.name}"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="alert alert-info alertTitle" role="alert">
+                                        <span th:text="${ub.bonus.cost}"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="alert alert-info alertTitle" role="alert">
+                                        <span th:text="${ub.number}"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="alert alert-info alertTitle" role="alert">
+                                        <span th:text="${ub.sum}"></span>
+                                    </div>
+                                </td>
+                                <td class="action">
+                                    <a th:href="@{'/manage/user/bonus/minus/{id}'(id=${ub.id})}" class="btn btn-primary">
+                                        <span aria-hidden="" class="glyphicon glyphicon-minus-sign"></span>
+                                    </a>
+                                    <a th:disabled="${ub.user.pointsActual < ub.bonus.cost}"
+                                       th:href="@{'/manage/user/bonus/plus/{id}'(id=${ub.id})}" class="btn btn-primary">
+                                        <span aria-hidden="" class="glyphicon glyphicon-plus"></span>
+                                    </a>
+                                    <a th:href="@{'/manage/user/bonus/remove/{id}'(id=${ub.id})}" class="btn btn-danger">
+                                        <span aria-hidden="" class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <label th:text="'Celkem ' + ${costAll}"></label>
+                        <form></form>
+                        <form th:action="@{'/manage/user/bonus/confirm'}">
+                            <button>Potvrdit</button>
+                        </form>
+                    </div>
+                    <br><br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

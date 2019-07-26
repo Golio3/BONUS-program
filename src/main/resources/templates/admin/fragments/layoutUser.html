@@ -2,12 +2,12 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{admin/fragments/layout}">
-<head>
-    <title>Home</title>
-</head>
 <body>
+
 <div layout:fragment="content" th:remove="tag">
-    <h1>Home</h1>
+    <th:block th:replace="admin/fragments/headerUser :: headerUser"/>
+    <th:block layout:fragment="user"/>
+    <th:block th:replace="admin/fragments/footer :: footer"/>
 </div>
 </body>
 </html>

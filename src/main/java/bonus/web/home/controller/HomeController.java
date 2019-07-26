@@ -29,7 +29,6 @@ public class HomeController {
 
     @GetMapping()
     public String home(Model model) {
-
         HomeModel home = homeRepository.findOne(1);
         List<FoldersModel> folders = foldersRepository.findAll();
 

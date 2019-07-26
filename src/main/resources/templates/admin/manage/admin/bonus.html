@@ -3,35 +3,35 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{admin/fragments/layoutAdmin}">
 <head>
-    <title>Uživatelé</title>
+    <title>Dárky</title>
 </head>
 <body>
 <div layout:fragment="admin" th:remove="tag">
-    <h1>Uživatelé</h1>
+    <h1>Dárky</h1>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-10">
-                            <form id="usersForm" th:action="@{/manage/admin}" th:object="${users}">
-                                <div th:if="${#lists.isEmpty(users)}" class="alert alert-info" role="alert">
-                                    Nebyly nalezeny žádné uživatele
+                            <form id="usersForm" th:action="@{/manage/admin/bonus}" th:object="${bonuses}">
+                                <div th:if="${#lists.isEmpty(bonuses)}" class="alert alert-info" role="alert">
+                                    Nebyly nalezeny žádné dárek
                                 </div>
-                                <div th:if="${not #lists.isEmpty(users)}">
+                                <div th:if="${not #lists.isEmpty(bonuses)}">
                                     <table class="table table-bordered">
                                         <tbody>
-                                        <tr th:each="user,stat : ${users}" class="toggles">
+                                        <tr th:each="bonus,stat : ${bonuses}" class="toggles">
                                             <td>
                                                 <div class="alert alert-info alertTitle" role="alert">
-                                                    <span th:text="${user.username}"></span>
+                                                    <span th:text="${bonus.name}"></span>
                                                 </div>
                                             </td>
                                             <td class="action">
-                                                <a th:href="@{'/manage/admin/edit/{id}'(id=${user.id})}" class="btn btn-primary">
+                                                <a th:href="@{'/manage/admin/bonus/edit/{id}'(id=${bonus.id})}" class="btn btn-primary">
                                                     <span aria-hidden="" class="glyphicon glyphicon-edit"></span>
                                                 </a>
-                                                <a th:href="@{'/manage/admin/delete/{id}'(id=${user.id})}" class="btn btn-danger">
+                                                <a th:href="@{'/manage/admin/bonus/delete/{id}'(id=${bonus.id})}" class="btn btn-danger">
                                                     <span aria-hidden="" class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             </td>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-md-2">
                             <a class="btn btn-primary btn-lg btn-block btn-add-toggle"
-                               th:href="@{'/manage/admin/add'}">+</a>
+                               th:href="@{'/manage/admin/bonus/add'}">+</a>
                         </div>
                     </div>
                 </div>

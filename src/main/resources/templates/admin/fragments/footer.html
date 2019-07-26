@@ -5,13 +5,43 @@
 <th:block th:fragment="footer">
     <footer>
         <div class="container">
-            <p>
-                <span sec:authorize="isAuthenticated()" style="display: inline-block;">
-                    | Logged user: <span sec:authentication="name"></span> |
-                    Roles: <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/manage/logout}">Sign Out</a>
-                </span>
-            </p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" th:href="@{/}">
+                            <img th:src="@{/img/logo.png}" style="width: 200px; height: 30px"
+                                 alt="memorynotfound logo"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                            | Logged user: <span sec:authentication="name"></span> |
+                            Roles: <span sec:authentication="principal.authorities"></span> |
+                            <a th:href="@{/manage/logout}">Sign Out</a>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <table>
+                        <tr>
+                            <td><img th:src="@{/img/fbIcon.png}" style="width: 24px; height: 24px; margin: 2px">
+                            </td>
+                            <td><img th:src="@{/img/inIcon.png}" style="width: 24px; height: 24px; margin: 2px">
+                            </td>
+                            <td>
+                                <button style=" margin: 2px">Rezervovat termin >></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                +420 123 456 789 info@mapoplasma.cz
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </footer>
 

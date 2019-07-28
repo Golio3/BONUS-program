@@ -16,15 +16,11 @@ public class UserBonusModel {
     @Column(name = "STATUS")
     private Integer status;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY
-    )
-    @JoinColumn(name = "USER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USERS_ID")
     private UsersModel user;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY
-    )
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BONUS_ID")
     private BonusModel bonus;
 

@@ -10,7 +10,7 @@ public class LoginController {
 
     @GetMapping("/")
     public String root() {
-        return "admin/index";
+        return "/index";
     }
 
     @GetMapping("/login")

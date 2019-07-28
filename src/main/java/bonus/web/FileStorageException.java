@@ -1,4 +1,4 @@
-package bonus.storage;
+package bonus.web;
 
 public class FileStorageException extends RuntimeException {
     public FileStorageException(String message) {
